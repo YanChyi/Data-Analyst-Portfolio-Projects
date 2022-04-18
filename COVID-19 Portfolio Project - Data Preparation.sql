@@ -5,9 +5,9 @@
     
 -- Step 2: Preprocess the COVID-19 CSV file
 	-- split the file into two CSV files: covid_deaths & covid_vaccinations (check the CREATE TABLE statements below for column splitting)
-    -- add a blank column at the end of each CSV file
-    -- replace all blank entries with \N, which semantically will be interpreted by MySQL as meaning NULL
-    -- check the data type of each column
+	-- add a blank column at the end of each CSV file
+	-- replace all blank entries with \N, which semantically will be interpreted by MySQL as meaning NULL
+	-- check the data type of each column
 
 -- Step 3: Import CSV file into MySQL table using command line
 

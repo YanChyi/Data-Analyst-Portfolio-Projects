@@ -27,18 +27,18 @@ DROP TEMPORARY TABLE IF EXISTS covid_cases__deaths_vaccinations_by_country;
 CREATE TEMPORARY TABLE covid_cases__deaths_vaccinations_by_country
 SELECT
 	dea.location,
-    dea.dates,
-    dea.population,
-    dea.total_cases,
-    dea.new_cases,
-    dea.total_deaths,
-    dea.new_deaths,
-    vac.total_vaccinations,
-    vac.people_fully_vaccinated
+	dea.dates,
+	dea.population,
+	dea.total_cases,
+	dea.new_cases,
+	dea.total_deaths,
+	dea.new_deaths,
+	vac.total_vaccinations,
+	vac.people_fully_vaccinated
 FROM covid_deaths dea
 	INNER JOIN covid_vaccinations vac
-			ON dea.location = vac.location
-            AND dea.dates = vac.dates
+		ON dea.location = vac.location
+		AND dea.dates = vac.dates
 WHERE dea.continent IS NOT NULL -- to filter out the continents and income groups in location column
 ORDER BY 1,2
 ;
@@ -49,10 +49,9 @@ ORDER BY 1,2
 
 SELECT
 	location,
-    dates,
-    total_cases,
-    total_deaths,
-    (total_deaths/total_cases)*100 AS death_rate
+	dates,
+	total_deaths,
+	(total_deaths/total_cases)*100 AS death_rate
 FROM covid_cases__deaths_vaccinations_by_country
 WHERE 
 	location = 'Malaysia' -- choose an arbitrary country
@@ -65,10 +64,10 @@ ORDER BY 1,2
 
 SELECT
 	location,
-    dates,
-    population,
-    total_cases,
-    (total_cases/population)*100 AS percent_population_infected
+	dates,
+	population,
+	total_cases,
+	(total_cases/population)*100 AS percent_population_infected
 FROM covid_cases__deaths_vaccinations_by_country
 WHERE 
 	location = 'Malaysia' -- choose an arbitrary country
@@ -81,15 +80,15 @@ ORDER BY 1,2
 
 SELECT
 	location,
-    dates,
-    population,
-    total_vaccinations AS doses_given,
-    people_fully_vaccinated AS fully_vaccinated,
-    (people_fully_vaccinated/population)*100 AS percent_population_fully_vaccinated
+	dates,
+	population,
+	total_vaccinations AS doses_given,
+	people_fully_vaccinated AS fully_vaccinated,
+	(people_fully_vaccinated/population)*100 AS percent_population_fully_vaccinated
 FROM covid_cases__deaths_vaccinations_by_country
 WHERE 
 	location = 'Malaysia' -- choose an arbitrary country
-    AND total_vaccinations IS NOT NULL
+	AND total_vaccinations IS NOT NULL
 ORDER BY 1,2
 ;
 
@@ -98,13 +97,13 @@ ORDER BY 1,2
 
 SELECT
 	location,
-    population,
-    MAX(total_cases) AS highest_infection_count,
-    MAX((total_cases/population))*100 AS percent_population_infected
+	population,
+	MAX(total_cases) AS highest_infection_count,
+	MAX((total_cases/population))*100 AS percent_population_infected
 FROM covid_cases__deaths_vaccinations_by_country
 GROUP BY
 	location,
-    population
+	population
 ORDER BY
 	percent_population_infected DESC
 ;
@@ -125,13 +124,13 @@ ORDER BY total_death_count DESC
 
 SELECT
 	location,
-    population,
-    MAX(people_fully_vaccinated) AS highest_fully_vaccinated,
-    MAX((people_fully_vaccinated/population))*100 AS percent_population_fully_vaccinated
+	population,
+	MAX(people_fully_vaccinated) AS highest_fully_vaccinated,
+	MAX((people_fully_vaccinated/population))*100 AS percent_population_fully_vaccinated
 FROM covid_cases__deaths_vaccinations_by_country
 GROUP BY
 	location,
-    population
+	population
 ORDER BY
 	percent_population_fully_vaccinated DESC
 ;
@@ -154,18 +153,18 @@ DROP TEMPORARY TABLE IF EXISTS covid_cases__deaths_vaccinations_by_continent;
 CREATE TEMPORARY TABLE covid_cases__deaths_vaccinations_by_continent
 SELECT
 	dea.location,
-    dea.dates,
-    dea.population,
-    dea.total_cases,
-    dea.new_cases,
-    dea.total_deaths,
-    dea.new_deaths,
+	dea.dates,
+	dea.population,
+	dea.total_cases,
+	dea.new_cases,
+	dea.total_deaths,
+	dea.new_deaths,
 	vac.total_vaccinations,
-    vac.people_fully_vaccinated
+	vac.people_fully_vaccinated
 FROM covid_deaths dea
 	INNER JOIN covid_vaccinations vac
-			ON dea.location = vac.location
-            AND dea.dates = vac.dates
+		ON dea.location = vac.location
+		AND dea.dates = vac.dates
 WHERE
 	dea.continent IS NULL -- to filter out the countries in location column
 	AND dea.location in ('Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America')
@@ -178,10 +177,10 @@ ORDER BY 1,2
 
 SELECT
 	location AS continent,
-    dates,
-    total_cases,
-    total_deaths,
-    (total_deaths/total_cases)*100 AS death_rate
+	dates,
+	total_cases,
+	total_deaths,
+	(total_deaths/total_cases)*100 AS death_rate
 FROM covid_cases__deaths_vaccinations_by_continent
 WHERE 
 	location = 'Asia' -- choose an arbitrary continent
@@ -194,10 +193,10 @@ ORDER BY 1,2
 
 SELECT
 	location AS continent,
-    dates,
-    population,
-    total_cases,
-    (total_cases/population)*100 AS percent_population_infected
+	dates,
+	population,
+	total_cases,
+	(total_cases/population)*100 AS percent_population_infected
 FROM covid_cases__deaths_vaccinations_by_continent
 WHERE 
 	location = 'Asia' -- choose an arbitrary continent
@@ -210,15 +209,15 @@ ORDER BY 1,2
 
 SELECT
 	location AS continent,
-    dates,
-    population,
-    total_vaccinations AS doses_given,
-    people_fully_vaccinated AS fully_vaccinated,
-    (people_fully_vaccinated/population)*100 AS percent_population_fully_vaccinated
+	dates,
+	population,
+	total_vaccinations AS doses_given,
+	people_fully_vaccinated AS fully_vaccinated,
+	(people_fully_vaccinated/population)*100 AS percent_population_fully_vaccinated
 FROM covid_cases__deaths_vaccinations_by_continent
 WHERE 
 	location = 'Asia' -- choose an arbitrary continent
-    AND total_vaccinations IS NOT NULL
+	AND total_vaccinations IS NOT NULL
 ORDER BY 1,2
 ;
 
@@ -227,13 +226,13 @@ ORDER BY 1,2
 
 SELECT
 	location AS continent,
-    population,
-    MAX(total_cases) AS highest_infection_count,
-    MAX((total_cases/population))*100 AS percent_population_infected
+	population,
+	MAX(total_cases) AS highest_infection_count,
+	MAX((total_cases/population))*100 AS percent_population_infected
 FROM covid_cases__deaths_vaccinations_by_continent
 GROUP BY
 	location,
-    population
+	population
 ORDER BY
 	percent_population_infected DESC
 ;
@@ -243,7 +242,7 @@ ORDER BY
 
 SELECT
 	location AS continent,
-    MAX(total_deaths) AS total_death_count
+	MAX(total_deaths) AS total_death_count
 FROM covid_cases__deaths_vaccinations_by_continent
 GROUP BY location
 ORDER BY total_death_count DESC
@@ -254,13 +253,13 @@ ORDER BY total_death_count DESC
 
 SELECT
 	location AS continent,
-    population,
-    MAX(people_fully_vaccinated) AS highest_fully_vaccinated,
-    MAX((people_fully_vaccinated/population))*100 AS percent_population_fully_vaccinated
+	population,
+	MAX(people_fully_vaccinated) AS highest_fully_vaccinated,
+	MAX((people_fully_vaccinated/population))*100 AS percent_population_fully_vaccinated
 FROM covid_cases__deaths_vaccinations_by_continent
 GROUP BY
 	location,
-    population
+	population
 ORDER BY
 	percent_population_fully_vaccinated DESC
 ;
@@ -286,18 +285,18 @@ DROP TEMPORARY TABLE IF EXISTS covid_cases__deaths_vaccinations_by_income_group;
 CREATE TEMPORARY TABLE covid_cases__deaths_vaccinations_by_income_group
 SELECT
 	dea.location,
-    dea.dates,
-    dea.population,
-    dea.total_cases,
-    dea.new_cases,
-    dea.total_deaths,
-    dea.new_deaths,
+	dea.dates,
+	dea.population,
+	dea.total_cases,
+	dea.new_cases,
+	dea.total_deaths,
+	dea.new_deaths,
 	vac.total_vaccinations,
-    vac.people_fully_vaccinated
+	vac.people_fully_vaccinated
 FROM covid_deaths dea
 	INNER JOIN covid_vaccinations vac
-			ON dea.location = vac.location
-            AND dea.dates = vac.dates
+		ON dea.location = vac.location
+		AND dea.dates = vac.dates
 WHERE
 	dea.continent IS NULL -- to filter out the countries in location column
 	AND dea.location LIKE '%income%'
@@ -309,13 +308,13 @@ ORDER BY 1,2
 
 SELECT
 	location AS income_group,
-    population,
-    MAX(total_cases) AS income_group_infection_count,
-    MAX((total_cases/population))*100 AS income_group_percent_population_infected
+	population,
+	MAX(total_cases) AS income_group_infection_count,
+	MAX((total_cases/population))*100 AS income_group_percent_population_infected
 FROM covid_cases__deaths_vaccinations_by_income_group
 GROUP BY
 	location,
-    population
+	population
 ORDER BY
 	income_group_percent_population_infected DESC
 ;
@@ -325,7 +324,7 @@ ORDER BY
 
 SELECT
 	location AS income_group,
-    MAX(total_deaths) AS total_death_count
+	MAX(total_deaths) AS total_death_count
 FROM covid_cases__deaths_vaccinations_by_income_group
 GROUP BY location
 ORDER BY total_death_count DESC
@@ -336,13 +335,13 @@ ORDER BY total_death_count DESC
 
 SELECT
 	location AS income_group,
-    population,
-    MAX(people_fully_vaccinated) AS highest_fully_vaccinated,
-    MAX((people_fully_vaccinated/population))*100 AS percent_population_fully_vaccinated
+	population,
+	MAX(people_fully_vaccinated) AS highest_fully_vaccinated,
+	MAX((people_fully_vaccinated/population))*100 AS percent_population_fully_vaccinated
 FROM covid_cases__deaths_vaccinations_by_income_group
 GROUP BY
 	location,
-    population
+	population
 ORDER BY
 	percent_population_fully_vaccinated DESC
 ;
@@ -356,9 +355,9 @@ ORDER BY
 
 SELECT
 	dates,
-    SUM(new_cases) AS total_cases,
-    SUM(new_deaths) AS total_deaths,
-    SUM(new_deaths)/SUM(new_cases)*100 AS death_rate
+	SUM(new_cases) AS total_cases,
+	SUM(new_deaths) AS total_deaths,
+	SUM(new_deaths)/SUM(new_cases)*100 AS death_rate
 FROM covid_deaths
 WHERE continent IS NOT NULL -- to filter out the continents and income groups in location column
 GROUP BY 1
@@ -374,16 +373,16 @@ ORDER BY 1
 
 SELECT 
 	dea.continent,
-    dea.location,
-    dea.dates,
-    dea.population,
-    vac.new_vaccinations,
-    SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
-    -- (rolling_people_vaccinated/dea.population)*100
+	dea.location,
+	dea.dates,
+	dea.population,
+	vac.new_vaccinations,
+	SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
+	-- (rolling_people_vaccinated/dea.population)*100
 FROM covid_deaths dea
 	INNER JOIN covid_vaccinations vac
 		ON dea.location = vac.location
-        AND dea.dates = vac.dates
+		AND dea.dates = vac.dates
 WHERE dea.continent IS NOT NULL -- to filter out the continents and income groups in location column
 ORDER BY 2,3
 ;
@@ -395,15 +394,15 @@ WITH population_vs_vaccination
 AS (
 SELECT 
 	dea.continent,
-    dea.location,
-    dea.dates,
-    dea.population,
-    vac.new_vaccinations,
-    SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
+	dea.location,
+	dea.dates,
+	dea.population,
+	vac.new_vaccinations,
+	SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
 FROM covid_deaths dea
-	JOIN covid_vaccinations vac
+	INNER JOIN covid_vaccinations vac
 		ON dea.location = vac.location
-        AND dea.dates = vac.dates
+		AND dea.dates = vac.dates
 WHERE dea.continent IS NOT NULL
 ORDER BY 2,3
 )
@@ -421,15 +420,15 @@ DROP TEMPORARY TABLE IF EXISTS percent_population_vaccinated;
 CREATE TEMPORARY TABLE percent_population_vaccinated
 SELECT 
 	dea.continent,
-    dea.location,
-    dea.dates,
-    dea.population,
-    vac.new_vaccinations,
-    SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
+	dea.location,
+	dea.dates,
+	dea.population,
+	vac.new_vaccinations,
+	SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
 FROM covid_deaths dea
-	JOIN covid_vaccinations vac
+	INNER JOIN covid_vaccinations vac
 		ON dea.location = vac.location
-        AND dea.dates = vac.dates
+		AND dea.dates = vac.dates
 WHERE dea.continent IS NOT NULL
 ORDER BY 2,3
 ;
@@ -445,19 +444,19 @@ FROM percent_population_vaccinated
 
 SELECT
 	*,
-    (rolling_people_vaccinated/population)*100 AS percent_people_vaccinated
+	(rolling_people_vaccinated/population)*100 AS percent_people_vaccinated
 FROM (
 SELECT 
 	dea.continent,
-    dea.location,
-    dea.dates,
-    dea.population,
-    vac.new_vaccinations,
-    SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
+	dea.location,
+	dea.dates,
+	dea.population,
+	vac.new_vaccinations,
+	SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
 FROM covid_deaths dea
-	JOIN covid_vaccinations vac
+	INNER JOIN covid_vaccinations vac
 		ON dea.location = vac.location
-        AND dea.dates = vac.dates
+		AND dea.dates = vac.dates
 WHERE dea.continent IS NOT NULL
 ORDER BY 2,3
 ) AS pop_vaccinated
@@ -470,16 +469,16 @@ ORDER BY 2,3
 CREATE VIEW percentage_population_vaccinated AS
 SELECT 
 	dea.continent,
-    dea.location,
-    dea.dates,
-    dea.population,
-    vac.new_vaccinations,
-    SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
+	dea.location,
+	dea.dates,
+	dea.population,
+	vac.new_vaccinations,
+	SUM(vac.new_vaccinations) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.dates) AS rolling_people_vaccinated
 	-- (rolling_people_vaccinated/dea.population)*100
 FROM covid_deaths dea
-	JOIN covid_vaccinations vac
+	INNER JOIN covid_vaccinations vac
 		ON dea.location = vac.location
-        AND dea.dates = vac.dates
+		AND dea.dates = vac.dates
 WHERE dea.continent IS NOT NULL
 ORDER BY 2,3
 ;

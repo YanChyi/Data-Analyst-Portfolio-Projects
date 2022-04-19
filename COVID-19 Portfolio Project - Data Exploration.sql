@@ -50,6 +50,7 @@ ORDER BY 1,2
 SELECT
 	location,
 	dates,
+	total_cases,
 	total_deaths,
 	(total_deaths/total_cases)*100 AS death_rate
 FROM covid_cases__deaths_vaccinations_by_country
@@ -113,7 +114,7 @@ ORDER BY
 
 SELECT
 	location,
-    MAX(total_deaths) AS total_death_count
+	MAX(total_deaths) AS total_death_count
 FROM covid_cases__deaths_vaccinations_by_country
 GROUP BY location
 ORDER BY total_death_count DESC

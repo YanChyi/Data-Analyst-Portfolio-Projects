@@ -110,7 +110,7 @@ ORDER BY
 ;
 
 
--- Countries with Highest Death Count per Population
+-- Countries with Highest Death Count
 
 SELECT
 	location,
@@ -239,7 +239,7 @@ ORDER BY
 ;
 
 
--- Continents with Highest Death Count per Population
+-- Continents with Highest Death Count
 
 SELECT
 	location AS continent,
@@ -321,7 +321,7 @@ ORDER BY
 ;
 
 
--- Income Groups with Highest Death Count per Population
+-- Income Groups with Highest Death Count
 
 SELECT
 	location AS income_group,

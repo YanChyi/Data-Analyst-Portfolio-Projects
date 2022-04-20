@@ -8,6 +8,7 @@
 	-- add a blank column at the end of each CSV file
 	-- replace all blank entries with \N, which semantically will be interpreted by MySQL as meaning NULL
 	-- check the data type of each column
+	-- change the dates column to the format of 'yyyy-mm-dd''
 
 -- Step 3: Import CSV file into MySQL table using command line
 

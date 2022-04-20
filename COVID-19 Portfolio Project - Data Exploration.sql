@@ -168,7 +168,7 @@ FROM covid_deaths dea
 		AND dea.dates = vac.dates
 WHERE
 	dea.continent IS NULL -- to filter out the countries in location column
-	AND dea.location in ('Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America')
+	AND dea.location IN ('Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America')
 ORDER BY 1,2
 ;
 

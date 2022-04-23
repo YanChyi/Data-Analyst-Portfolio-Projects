@@ -18,7 +18,7 @@ FROM nashville_housing
 
 SELECT 
 	SaleDate,
-    CONVERT(SaleDate, Date)
+	CONVERT(SaleDate, Date)
 FROM nashville_housing
 ;
 
@@ -40,10 +40,10 @@ SELECT
 	a.UniqueID,
 	a.ParcelID, 
 	a.PropertyAddress,
-    b.UniqueID,
-    b.ParcelID, 
-    b.PropertyAddress,
-    IFNULL(a.PropertyAddress, b.PropertyAddress)
+	b.UniqueID,
+	b.ParcelID, 
+	b.PropertyAddress,
+	IFNULL(a.PropertyAddress, b.PropertyAddress)
 FROM nashville_housing a
 	JOIN nashville_housing b
 		ON a.ParcelID = b.ParcelID
@@ -70,7 +70,7 @@ WHERE a.PropertyAddress IS NULL
 SELECT 
 	PropertyAddress,
 	SUBSTRING(PropertyAddress, 1, LOCATE(',',PropertyAddress)-1) AS PropertySplitAddress,
-    TRIM(SUBSTRING(PropertyAddress, LOCATE(',',PropertyAddress)+1, LENGTH(PropertyAddress))) AS PropertySplitCity
+	TRIM(SUBSTRING(PropertyAddress, LOCATE(',',PropertyAddress)+1, LENGTH(PropertyAddress))) AS PropertySplitCity
 FROM nashville_housing
 ;
 
@@ -91,8 +91,8 @@ SET
 SELECT
 	OwnerAddress,
 	SUBSTRING_INDEX(OwnerAddress, ',', 1) AS OwnerSplitAddress,
-    TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(OwnerAddress, ',', 2), ',', -1)) AS OwnerSplitCity,
-    TRIM(SUBSTRING_INDEX(OwnerAddress, ',', -1)) AS OwnerSplitState
+	TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(OwnerAddress, ',', 2), ',', -1)) AS OwnerSplitCity,
+	TRIM(SUBSTRING_INDEX(OwnerAddress, ',', -1)) AS OwnerSplitState
 FROM nashville_housing
 ;
 
@@ -116,7 +116,7 @@ SET
 
 SELECT DISTINCT 
 	SoldAsVacant,
-    COUNT(SoldAsVacant)
+	COUNT(SoldAsVacant)
 FROM nashville_housing
 GROUP BY 1
 ORDER BY 2
@@ -163,7 +163,7 @@ FROM nashville_housing
 ) 
 SELECT 
 	UniqueID,
-    row_num
+	row_num
 FROM row_num_cte
 WHERE row_num > 1
 ;
@@ -171,7 +171,7 @@ WHERE row_num > 1
 DELETE FROM nashville_housing
 WHERE UniqueID IN (
 	SELECT UniqueID
-    FROM (
+    	FROM (
 		SELECT 
 			*,
 			ROW_NUMBER() OVER (
@@ -185,7 +185,7 @@ WHERE UniqueID IN (
 				UniqueID
 			) AS row_num
 		FROM nashville_housing
-        ) AS t
+    		) AS t
 	WHERE row_num > 1
 );
 

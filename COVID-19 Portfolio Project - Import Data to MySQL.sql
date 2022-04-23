@@ -10,7 +10,6 @@ COVID-19 Portfolio Project: Import Data to MySQL
     
 -- Step 2: Preprocess the COVID-19 CSV file
 	-- split the file into two CSV files: covid_deaths & covid_vaccinations (check the CREATE TABLE statements below for column splitting)
-	-- add a blank column at the end of each CSV file
 	-- replace all blank entries with \N, which semantically will be interpreted by MySQL as meaning NULL
 	-- check the data type of each column
 	-- change the dates column to the format of 'yyyy-mm-dd''

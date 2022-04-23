@@ -1,4 +1,9 @@
--- COVID-19 Portfolio Project: Data Preparation
+/*
+
+COVID-19 Portfolio Project: Import Data to MySQL
+
+*/
+
 
 -- Step 1: Download data
 	-- https://ourworldindata.org/covid-deaths#explore-the-global-data-on-confirmed-covid-19-deaths

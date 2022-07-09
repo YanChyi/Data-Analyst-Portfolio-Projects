@@ -1,9 +1,9 @@
 -- Housing Data Cleaning in SQL: Data Preparation
 
--- Step 1: Preprocess the Nashville Housing Data for Data Cleaning CSV file
+-- Step 1: Preprocess the 'Nashville Housing Data for Data Cleaning' CSV file
 	-- replace all blank entries with \N, which semantically will be interpreted by MySQL as meaning NULL
-    -- check the data type of each column
-    -- change the dates column to the format of 'yyyy-mm-dd'
+    	-- check the data type of each column
+    	-- change the dates column to the format of 'yyyy-mm-dd'
 	-- enclosed the data in the field of ParcelID, LandUse, PropertyAddress, LegalReference, SoldAsVacant, OwnerName, OwnerAddress, and TaxDistrict with double quotes
 
 -- Step 2: Import CSV file into MySQL table using command line
@@ -74,3 +74,4 @@ TaxDistrict = TRIM(BOTH '''' FROM TaxDistrict)
 -- To ensure the CSV file is fully loaded into the MySQL table
 
 SELECT * FROM nashville_housing;
+

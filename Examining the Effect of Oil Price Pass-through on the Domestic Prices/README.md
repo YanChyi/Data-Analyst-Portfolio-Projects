@@ -1,4 +1,4 @@
-## **Examining the Effect of Oil Price Pass-through on Domestic Prices**
+## **Examining the Effect of Oil Price Pass-through on the Domestic Prices**
 
 In this research, we studied the effect of oil price pass-through on domestic prices, namely on the consumer price index (CPI) and producer price index (PPI), based on the asymmetric adjustment modelling approach. The behaviour of domestic prices in response to oil price changes was examined by comparing two groups of economies, namely the oil-importing versus oil-exporting countries.
 

@@ -1,4 +1,9 @@
--- Housing Data Cleaning in SQL: Data Preparation
+/* 
+
+Housing Data Cleaning in SQL: Import Data to MySQL
+
+*/
+
 
 -- Step 1: Preprocess the 'Nashville Housing Data for Data Cleaning' CSV file
 	-- replace all blank entries with \N, which semantically will be interpreted by MySQL as meaning NULL

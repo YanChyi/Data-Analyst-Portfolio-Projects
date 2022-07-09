@@ -16,4 +16,4 @@ These insights provide a snapshot of the programming community and can serve as 
 - businesses who are deciding to upskill their workers and establish hiring strategies
 - educators who are planning to roll out the relevant courses to their students
 
-Click to view: [ ***[Jupyter Notebook]()*** | ***[Tableau Dashboard](https://public.tableau.com/app/profile/yan.chyi/viz/DataVisualizationPartIICurrentTechnologyUsageFutureTechnologyTrendDemographicsofRespondents/CurrentTechnologyUsage)*** | ***[Presentation Slides]()***
+Click to view: [ ***[Jupyter Notebook](https://nbviewer.org/github/YanChyi/Data-Analyst-Portfolio-Projects/blob/main/Stack%20Overflow%20Developer%20Survey%202019/Jupyter%20Notebook/Descriptive%20Analytics%20on%20the%20Stack%20Overflow%20Developer%20Survey%202019%20Data.ipynb)*** | ***[Tableau Dashboard](https://public.tableau.com/app/profile/yan.chyi/viz/DataVisualizationPartIICurrentTechnologyUsageFutureTechnologyTrendDemographicsofRespondents/CurrentTechnologyUsage)*** | ***[Presentation Slides]()***]

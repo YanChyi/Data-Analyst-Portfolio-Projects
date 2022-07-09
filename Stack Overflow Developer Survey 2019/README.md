@@ -1,6 +1,6 @@
-<center>
+<p align="center">
     <img src="https://raw.githubusercontent.com/YanChyi/Data-Analyst-Portfolio-Projects/main/Stack%20Overflow%20Developer%20Survey%202019/Images/Cover%20Image.JPG" width="700" alt="Cover Image"/>
-</center>
+</p>
 
 ## **Descriptive Analytics on the Stack Overflow Developer Survey 2019 Data**
 This descriptive analysis is examined the data collected from the Stack Overflow Developer Survey 2019. A randomized subset of the 2019 original dataset (approximately 10% of the original dataset; sample size, *N* = 11,552) was explored, analyzed, and visualized by using ***Python***, ***SQL*** and ***Tableau***.

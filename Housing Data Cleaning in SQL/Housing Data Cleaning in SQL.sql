@@ -1,6 +1,6 @@
 /* 
 
-Cleaning Data in SQL Queries
+Housing Data Cleaning in SQL Queries
 
 */
 

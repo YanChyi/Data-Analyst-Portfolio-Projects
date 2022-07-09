@@ -21,6 +21,7 @@ Housing Data Cleaning in SQL: Import Data to MySQL
 (replace root with your username)
 */
 
+
 -- Create database & table using command line
 
 CREATE DATABASE portfolio_project_nashville_housing;

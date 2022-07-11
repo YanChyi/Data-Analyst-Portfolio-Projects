@@ -54,7 +54,7 @@ CREATE TABLE nashville_housing
 
 -- Load CSV file into table
 
-LOAD DATA LOCAL INFILE 'C:/Users/Yan Chyi/Data Analyst Portfolio Project/Housing/Nashville Housing Data for Data Cleaning.csv'
+LOAD DATA LOCAL INFILE '/Nashville Housing Data for Data Cleaning.csv' -- change this path to match the path and filename of your CSV file
 INTO TABLE nashville_housing
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
